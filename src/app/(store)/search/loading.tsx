@@ -1,18 +1,17 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 import { Skeleton } from '@/components/skeleton'
 
-export default function SearchLoading() {
-  const searchParams = useSearchParams()
+import { CurrentSearch } from './current-search'
 
-  const query = searchParams.get('q')
+export default function SearchLoading() {
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm">
-        Resultados para: <span className="font-semibold">{query}</span>
-      </p>
+      <Suspense fallback={null}>
+        <CurrentSearch />
+      </Suspense>
       <div className="grid grid-cols-3 gap-6">
         <Skeleton className="h-[320px]" />
         <Skeleton className="h-[320px]" />
