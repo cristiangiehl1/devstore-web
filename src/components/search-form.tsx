@@ -2,7 +2,7 @@
 
 import { Search } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { FormEvent, Suspense } from 'react'
+import { FormEvent } from 'react'
 
 export function SearchForm() {
   const router = useRouter()
@@ -33,15 +33,13 @@ export function SearchForm() {
       className="flex w-[320px] items-center gap-3 rounded-full bg-zinc-900 px-5 py-3 ring-zinc-700"
     >
       <Search className="h-5 w-5 text-zinc-500" />
-      <Suspense fallback={<div>Carregando...</div>}>
-        <input
-          name="q"
-          type="text"
-          defaultValue={query ?? ''}
-          placeholder="Buscar produtos..."
-          className="flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-500"
-        />
-      </Suspense>
+      <input
+        name="q"
+        type="text"
+        defaultValue={query ?? ''}
+        placeholder="Buscar produtos..."
+        className="flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-500"
+      />
     </form>
   )
 }

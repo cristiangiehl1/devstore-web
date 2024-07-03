@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { Suspense } from 'react'
 
 import { api } from '@/data/api'
 import { Product } from '@/data/types/products'
@@ -36,11 +35,9 @@ export default async function Search({ searchParams }: SearchProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <Suspense fallback={<div>Carregando</div>}>
-        <p className="text-sm">
-          Resultados para: <span className="font-semibold">{query}</span>
-        </p>
-      </Suspense>
+      <p className="text-sm">
+        Resultados para: <span className="font-semibold">{query}</span>
+      </p>
       <div className="grid grid-cols-3 gap-6">
         {products.map((product) => {
           return (
